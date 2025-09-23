@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistem Informasi Laundry - POS</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('orders.section.style')
   </head>
   <body>
@@ -49,8 +50,8 @@
                             <option value="">-- Pilih Pelanggan --</option>
                             @foreach ($customers as $customer)
                                 <option value="{{ $customer->id }}" data-phone="{{ $customer->phone }}"
-                                  data-address="{{ $customer->address }}">
-                                  {{ $customer->customer_name }}
+                                    data-address="{{ $customer->address }}">
+                                    {{ $customer->customer_name }}
                                 </option>
                             @endforeach
                         </select>
@@ -67,18 +68,19 @@
               </div>
             </div>
 
-             <div class="form-group">
-                        <label>Pilih Layanan</label>
-                        <div class="services-grid">
-                            @foreach ($services as $service)
-                                <button type="button" class="service-card"
-                                    onclick="addService('{{ $service->id }}', {{ $service->price }})">
-                                    <h3>{{ $service->service_name }}</h3>
-                                    <div class="price">Rp. {{ number_format($service->price, 0, ',', '.') }}/kg</div>
-                                </button>
-                            @endforeach
-                        </div>
-                    </div>
+            <div class="form-group">
+              <label>Pilih Layanan</label>
+              <div class="services-grid">
+               @foreach ($services as $service)
+                  <button type="button" class="service-card"
+                    onclick="addService('{{ $service->id }}', {{ $service->price }})">
+                      <h3>{{ $service->service_name }}</h3>
+                      <div class="price">Rp. {{ number_format($service->price, 0, ',', '.') }}/kg</div>
+                    </button>
+                  @endforeach
+                
+              </div>
+            </div>
 
             <div class="form-row">
               <div class="form-group">
@@ -95,8 +97,8 @@
                 <label for="serviceType">Jenis Layanan</label>
                 <select id="serviceType" required>
                   <option value="">Pilih Layanan</option>
-                  @foreach ( $services as $service )
-                  <option value="{{ $service->service_name }}" data-id="{{ $service->id }}">{{ $service->service_name }}</option>
+                  @foreach ($services as $service)
+                    <option value="{{ $service->id }}">{{ $service->service_name }}</option>
                   @endforeach
                 </select>
               </div>
@@ -216,7 +218,7 @@
         <div id="modalContent"></div>
       </div>
     </div>
-@include('orders.section.script')
-    
+
+ @include('orders.section.script')
   </body>
 </html>

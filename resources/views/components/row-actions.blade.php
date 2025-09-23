@@ -17,16 +17,13 @@
 
 {{-- TAMBAHAN untuk ORDER --}}
 @if ($type === 'orders')
-  <form 
-        method="POST" 
-        class="inline ml-2">
-    @csrf
-    <button type="submit" class="text-brand-500 mr-2 hover:underline">
-      Pickup
-    </button>
-  </form>
 
-  <a " 
+    <a href="{{ route($routeName.'.show', $row['id']) }}" type="submit" class="text-brand-500 mr-2 hover:underline">
+      Detail
+    </a>
+
+
+  <a href="{{ route($routeName.'.print', $row['id']) }}" 
      target="_blank" 
      class="text-gray-600 dark:text-gray-400 hover:underline mr-2 ml-2">
     Print
