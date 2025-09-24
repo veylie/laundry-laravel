@@ -53,7 +53,8 @@
                 </p>
               </div>
               <div>
-                <form method="POST" action="{{ route('login') }}"
+                <form method="POST" action="{{ route('login.post') }}">
+                    @csrf
                   <div class="space-y-5">
                     <!-- Email -->
                     <div>
@@ -63,7 +64,6 @@
                         Email<span class="text-error-500">*</span>
                       </label>
                       <input
-                        name="email"
                         type="email"
                         id="email"
                         name="email"
@@ -80,8 +80,8 @@
                       </label>
                       <div x-data="{ showPassword: false }" class="relative">
                         <input
-                          name="password"
                           :type="showPassword ? 'text' : 'password'"
+                          name="password"
                           placeholder="Enter your password"
                           class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                         />
@@ -130,7 +130,7 @@
                         type="submit"
                         class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
                       >
-                        Log In
+                        Login
                       </button>
                     </div>
                   </div>

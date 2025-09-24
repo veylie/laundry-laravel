@@ -651,7 +651,8 @@
             <span
               class="text-theme-xs mt-0.5 block text-gray-500 dark:text-gray-400"
             >
-              {{ Auth::user()->role ?? 'User' }}
+              {{-- {{ Auth::user()->role ?? 'User' }} --}}
+              {{ auth()->user()->level->level_name ?? 'User' }}
             </span>
           </div>
 
